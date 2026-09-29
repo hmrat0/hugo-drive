@@ -1,25 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="pt-PT">
 <head>
-    <title>Hugo Drive</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#090a0d">
+<title>Hugo Drive</title>
+<style>
+:root{--glass:rgba(14,17,22,.78);--line:rgba(255,255,255,.28);--text:#f6f7f9;--muted:#b9bec8;--yellow:#ffd334;--red:#ff4d50;--green:#26d07c}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:#050608}body{min-height:100vh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 78% 48%,rgba(176,130,75,.24),transparent 19%),linear-gradient(155deg,#08090b 0%,#17181b 36%,#08090b 55%,#020305 100%)}
+body:after{content:"";position:fixed;z-index:-1;width:150vw;height:34vh;left:-15vw;top:44vh;border-top:3px solid rgba(255,213,149,.65);border-radius:50%;transform:rotate(-7deg);box-shadow:0 -2px 14px rgba(255,205,135,.35),0 0 90px rgba(177,126,60,.18);pointer-events:none}
+button,a{font:inherit}.topbar{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:800;text-shadow:0 1px 5px #000}.brand{text-align:center;letter-spacing:5px;font-size:16px;font-style:italic}.brand small{display:block;color:var(--yellow);font-size:7px;letter-spacing:4px}.status{display:flex;gap:10px;align-items:center}.dot{width:9px;height:9px;border-radius:50%;background:#28e783;box-shadow:0 0 10px #28e783}.content{width:min(1530px,94vw);margin:42px auto 145px}.page{display:none}.page.active{display:block}.dashboard{display:grid;grid-template-columns:1.05fr 1.05fr 1.05fr 1.05fr;gap:18px;align-items:start}.card{position:relative;min-height:192px;background:var(--glass);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 18px 42px rgba(0,0,0,.28);backdrop-filter:blur(16px)}
+.clock-card{display:grid;place-items:center}.clock{width:156px;height:156px;border-radius:50%;background:#fafafa;border:3px solid #111;position:relative;color:#111;box-shadow:inset 0 0 0 2px #aaa}.clock .n{position:absolute;font-size:18px;font-weight:900;transform:translate(-50%,-50%)}.hand{position:absolute;left:50%;bottom:50%;transform-origin:50% 100%;border-radius:5px}.h{width:6px;height:43px;background:#111}.m{width:4px;height:60px;background:#111}.s{width:2px;height:65px;background:#ef8a18}.pin{position:absolute;width:12px;height:12px;background:#111;border-radius:50%;left:calc(50% - 6px);top:calc(50% - 6px)}
+.note-card{background:#fafafa;color:#333}.note-title{background:linear-gradient(#ffe45a,#ffd42e);padding:9px 18px;font-size:22px;font-weight:900;color:#111}.note-card textarea{width:100%;height:150px;border:0;outline:0;resize:none;padding:14px 18px;font-size:17px;line-height:31px;background:repeating-linear-gradient(#fff 0,#fff 30px,#dfe4eb 31px);color:#444}
+.calendar-card{background:#f7f7f7;color:#17191c}.month{background:var(--red);color:#fff;text-align:center;padding:14px;font-size:20px;font-weight:900;letter-spacing:2px}.day{font-size:92px;line-height:96px;text-align:center;font-weight:950}.agenda{border-top:1px solid #ddd;padding:8px 24px;font-weight:800}.agenda b{display:block;color:var(--red);font-size:12px}
+.weather{padding:18px;background:linear-gradient(125deg,rgba(116,132,148,.96),rgba(76,91,108,.8));display:flex;justify-content:space-between}.weather .temp{font-size:76px;line-height:80px}.weather .city{font-weight:900;font-size:17px}.weather .desc{font-weight:900;font-size:18px}.weather-icon{font-size:86px;align-self:center;filter:drop-shadow(0 7px 10px #556)}
+.market{grid-column:1/3;min-height:205px;padding:12px 15px}.market-head{display:flex;justify-content:space-between;font-weight:900}.badge{border:1px solid var(--red);border-radius:13px;color:#ff6a70;padding:3px 10px;font-size:12px}.chart{height:123px;margin-top:8px;position:relative;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}.chart svg{width:100%;height:100%}.market-foot{display:flex;justify-content:space-between;align-items:end}.price{font-size:21px;font-weight:950}.demo{font-size:10px;color:var(--muted)}
+.quick{justify-self:center;text-align:center;text-decoration:none;color:#fff}.quick-icon{width:78px;height:78px;border-radius:22px;display:grid;place-items:center;font-size:44px;background:linear-gradient(145deg,#2094ff,#5067ff);box-shadow:inset 0 0 0 1px #ffffff55,0 8px 20px #0008}.quick span{display:block;margin-top:7px;font-size:12px;font-weight:900}.vehicle-quick{grid-column:4;grid-row:2}
+.apps-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:26px 30px;padding:12px}.app{text-align:center;color:#fff;text-decoration:none;font-weight:800}.app-icon{width:86px;height:86px;margin:auto;border-radius:23px;background:rgba(255,255,255,.93);display:grid;place-items:center;font-size:46px;box-shadow:0 12px 28px #0009;border:1px solid #ffffff66;transition:.15s}.app:hover .app-icon{transform:translateY(-4px) scale(1.03)}.app-name{margin-top:8px;font-size:13px;text-shadow:0 2px 4px #000}
+.dock{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:20;display:flex;gap:15px;padding:14px 24px;background:rgba(25,28,34,.78);border:1px solid rgba(255,255,255,.35);border-radius:35px;backdrop-filter:blur(18px);box-shadow:0 15px 45px #0009}.dock button{border:0;background:transparent;color:#fff;cursor:pointer;text-align:center;font-size:11px;font-weight:800}.dock i{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:linear-gradient(145deg,#3c4653,#15191f);font-style:normal;font-size:34px;border:1px solid #ffffff30;margin-bottom:4px}.dock button.active i{outline:2px solid var(--yellow);transform:translateY(-3px)}
+.pager{position:fixed;left:50%;bottom:124px;transform:translateX(-50%);display:flex;gap:10px}.pager button{width:10px;height:10px;padding:0;border:0;border-radius:8px;background:#777}.pager .active{width:25px;background:#fff}
+@media(max-width:1050px){.dashboard{grid-template-columns:repeat(2,1fr)}.market{grid-column:1/3}.vehicle-quick{grid-column:auto;grid-row:auto}.apps-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:650px){.content{margin-top:20px}.dashboard{grid-template-columns:1fr}.market{grid-column:auto}.apps-grid{grid-template-columns:repeat(3,1fr);gap:22px 10px}.app-icon{width:72px;height:72px}.dock{max-width:95vw;gap:4px;padding:10px}.dock i{width:52px;height:52px}.brand{font-size:12px}}
+</style>
 </head>
-
-<body style="background:black;color:white;text-align:center">
-
-<h1>🚗 Hugo Drive</h1>
-
-<p>
-https://www.waze.comWaze</a>
-</p>
-
-<p>
-<a href="https://web.whatsapp.com">>
-</p>
-
-<p>
-<a href="https://open.spotify.y</a>
-</p>
-
+<body>
+<header class="topbar"><div id="topTime">--:-- &nbsp; --</div><div class="brand">HUGO<small>DRIVE</small></div><div class="status"><span class="dot"></span><span>ONLINE</span></div></header>
+<main class="content">
+<section id="homePage" class="page active">
+<div class="dashboard">
+ <article class="card clock-card"><div class="clock" id="clock"><div class="hand h" id="hourHand"></div><div class="hand m" id="minHand"></div><div class="hand s" id="secHand"></div><div class="pin"></div></div></article>
+ <article class="card note-card"><div class="note-title">Nova nota</div><textarea id="note" placeholder="Toque para editar e guardar uma nota."></textarea></article>
+ <article class="card calendar-card"><div class="month" id="month">MÊS</div><div class="day" id="day">00</div><div class="agenda"><b>AGENDA</b><span id="agendaText">Sem eventos</span></div></article>
+ <article class="card weather"><div><div class="city" id="city">Lisboa</div><small id="updated">A atualizar...</small><div class="temp"><span id="temp">--</span>°</div><div class="desc" id="weatherDesc">Meteorologia</div><small id="weatherExtra"></small></div><div class="weather-icon" id="weatherIcon">☁️</div></article>
+ <article class="card market"><div class="market-head"><div>TSLA <div class="demo">Gráfico visual de demonstração</div></div><span class="badge">PORTAL</span></div><div class="chart"><svg viewBox="0 0 700 130" preserveAspectRatio="none"><defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff6068" stop-opacity=".55"/><stop offset="1" stop-color="#ff6068" stop-opacity="0"/></linearGradient></defs><path d="M0 78 L24 68 L48 69 L65 82 L85 72 L110 77 L132 62 L151 75 L174 70 L195 79 L218 82 L243 79 L270 76 L294 65 L319 70 L343 61 L369 62 L397 72 L420 69 L444 73 L470 57 L495 52 L519 64 L543 59 L568 66 L592 55 L617 60 L640 58 L661 74 L682 88 L700 108 L700 130 L0 130Z" fill="url(#fill)"/><path d="M0 78 L24 68 L48 69 L65 82 L85 72 L110 77 L132 62 L151 75 L174 70 L195 79 L218 82 L243 79 L270 76 L294 65 L319 70 L343 61 L369 62 L397 72 L420 69 L444 73 L470 57 L495 52 L519 64 L543 59 L568 66 L592 55 L617 60 L640 58 L661 74 L682 88 L700 108" fill="none" stroke="#ff626b" stroke-width="5"/></svg></div><div class="market-foot"><span class="price">Tesla</span><span class="demo">Adicionar API financeira mais tarde</span></div></article>
+ <a class="quick vehicle-quick" href="https://www.tesla.com/ownersmanual" target="_blank" rel="noopener"><div class="quick-icon">🚘</div><span>Veículo</span></a>
+</div></section>
+<section id="appsPage" class="page"><div class="apps-grid" id="appsGrid"></div></section>
+</main>
+<div class="pager"><button id="p0" class="active" onclick="showPage(0)" aria-label="Dashboard"></button><button id="p1" onclick="showPage(1)" aria-label="Aplicações"></button></div>
+<nav class="dock">
+ <button onclick="openLink('https://www.tesla.com/support')"><i>🛠️</i>Assistência</button>
+ <button onclick="showPage(1)"><i>📊</i>Aplicações</button>
+ <button onclick="openLink('https://shop.tesla.com/')"><i>🛍️</i>Shop</button>
+ <button onclick="focusNote()"><i>📝</i>Notas</button>
+ <button class="active" onclick="showPage(0)"><i>🕘</i>Início</button>
+</nav>
+<script>
+const apps=[
+ ['Maps','🗺️','https://maps.google.com'],['Waze','🚙','https://www.waze.com/live-map'],['ABRP','⚡','https://abetterrouteplanner.com'],['WhatsApp','🟢','https://web.whatsapp.com'],['Outlook','📧','https://outlook.live.com'],['Teams','👥','https://teams.microsoft.com'],['Telegram','✈️','https://web.telegram.org'],
+ ['Spotify','🎵','https://open.spotify.com'],['YouTube','▶️','https://www.youtube.com'],['Netflix','🎬','https://www.netflix.com'],['Disney+','🏰','https://www.disneyplus.com'],['Plex','▷','https://app.plex.tv'],['Twitch','🟣','https://www.twitch.tv'],['Rádio','📻','https://radio.garden'],
+ ['ChatGPT','🤖','https://chatgpt.com'],['Copilot','✨','https://copilot.microsoft.com'],['Gemini','💎','https://gemini.google.com'],['Gmail','✉️','https://mail.google.com'],['Drive','🔺','https://drive.google.com'],['Fotos','🌈','https://photos.google.com'],['Calendário','📅','https://calendar.google.com']
+];
+document.getElementById('appsGrid').innerHTML=apps.map(([n,i,u])=>`<a class="app" href="${u}" target="_blank" rel="noopener"><div class="app-icon">${i}</div><div class="app-name">${n}</div></a>`).join('');
+const clock=document.getElementById('clock');for(let i=1;i<=12;i++){const n=document.createElement('span');n.className='n';n.textContent=i;const a=i*Math.PI/6;n.style.left=(50+39*Math.sin(a))+'%';n.style.top=(50-39*Math.cos(a))+'%';clock.appendChild(n)}
+const locale='pt-PT';function tick(){const d=new Date();document.getElementById('topTime').textContent=d.toLocaleTimeString(locale,{hour:'2-digit',minute:'2-digit'})+'   '+d.toLocaleDateString(locale,{weekday:'long',day:'2-digit',month:'long'}).toUpperCase();hourHand.style.transform=`translateX(-50%) rotate(${(d.getHours()%12)*30+d.getMinutes()/2}deg)`;minHand.style.transform=`translateX(-50%) rotate(${d.getMinutes()*6}deg)`;secHand.style.transform=`translateX(-50%) rotate(${d.getSeconds()*6}deg)`;month.textContent=d.toLocaleDateString(locale,{month:'long'}).toUpperCase();day.textContent=String(d.getDate()).padStart(2,'0')}tick();setInterval(tick,1000);
+const note=document.getElementById('note');note.value=localStorage.getItem('hugoDriveNote')||'';note.addEventListener('input',()=>localStorage.setItem('hugoDriveNote',note.value));
+function showPage(n){document.querySelectorAll('.page').forEach((p,i)=>p.classList.toggle('active',i===n));p0.classList.toggle('active',n===0);p1.classList.toggle('active',n===1)}
+function openLink(u){window.open(u,'_blank','noopener')}function focusNote(){showPage(0);setTimeout(()=>note.focus(),100)}
+function weatherCode(c){if(c===0)return['Céu limpo','☀️'];if(c<=3)return['Parcialmente nublado','⛅'];if(c<=48)return['Neblina','🌫️'];if(c<=67)return['Chuva','🌧️'];if(c<=77)return['Neve','🌨️'];if(c<=82)return['Aguaceiros','🌦️'];return['Trovoada','⛈️']}
+async function loadWeather(lat=38.7223,lon=-9.1393,cityName='Lisboa'){try{const u=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,apparent_temperature,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1`;const r=await fetch(u);const j=await r.json();const [desc,icon]=weatherCode(j.current.weather_code);city.textContent=cityName;temp.textContent=Math.round(j.current.temperature_2m);weatherDesc.textContent=desc;weatherIcon.textContent=icon;weatherExtra.textContent=`Máx. ${Math.round(j.daily.temperature_2m_max[0])}° · Mín. ${Math.round(j.daily.temperature_2m_min[0])}° · Vento ${Math.round(j.current.wind_speed_10m)} km/h`;updated.textContent='Atualizado agora'}catch(e){updated.textContent='Meteorologia indisponível'}}
+loadWeather();
+</script>
 </body>
-
 </html>
