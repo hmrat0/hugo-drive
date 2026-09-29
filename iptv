@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-PT">
 
 <head>
 
-<meta charset=8">
+<meta charset="utf-8">
 
 <meta name="viewport"
       content="width=device-width, initial-scale=1">
@@ -14,23 +14,56 @@
 
 body{
     margin:0;
-    background:#000;
+    background:#090b11;
     color:white;
-    font-family:Arial;
+    font-family:Segoe UI,Arial,sans-serif;
 }
 
-header{
-    background:#111;
-    padding:15px;
+.container{
+    max-width:700px;
+    margin:auto;
+    padding:30px;
+}
+
+.card{
+    background:#161b22;
+    padding:25px;
+    border-radius:20px;
+}
+
+h1{
     text-align:center;
-    font-size:22px;
-    font-weight:bold;
 }
 
-iframe{
+input{
     width:100%;
-    height:calc(100vh - 60px);
+    padding:14px;
+    margin-top:10px;
+    margin-bottom:20px;
     border:none;
+    border-radius:10px;
+    font-size:16px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    background:#6a5cff;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+button:hover{
+    background:#5443ff;
+}
+
+.info{
+    margin-top:20px;
+    font-size:14px;
+    color:#bbb;
 }
 
 </style>
@@ -39,32 +72,89 @@ iframe{
 
 <body>
 
-<header>
-📺 Hugo Drive IPTV
-</header>
+<div class="container">
 
-<iframe id="tv"></iframe>
+<div class="card">
+
+<h1>📺 Hugo Drive IPTV</h1>
+
+<label>URL</label>
+
+<input id="server"
+       placeholder="http://tron.robotman.top">
+
+<label>Utilizador</label>
+
+<input id="username"
+       placeholder="Username">
+
+<label>Password</label>
+
+<input id="password"
+       type="password"
+       placeholder="Password">
+
+<button onclick="saveConfig()">
+Guardar Configuração
+</button>
+
+<button onclick="openPortal()"
+        style="margin-top:10px">
+Abrir Portal IPTV
+</button>
+
+<div class="info">
+
+A configuração fica guardada no browser.
+
+</div>
+
+</div>
+
+</div>
 
 <script>
 
-const server =
-    "http://tron.robotman.top";
+document.getElementById("server").value =
+ localStorage.getItem("iptv_server") || "";
 
-const username =
-    "Hugo@Ratinho@31";
+document.getElementById("username").value =
+ localStorage.getItem("iptv_user") || "";
 
-const password =
-    "Swygj3m4CJs5";
+document.getElementById("password").value =
+ localStorage.getItem("iptv_pass") || "";
 
-/*
-Exemplo mais comum em Xtream
-*/
+function saveConfig(){
 
-const url =
-    `${server}/player_api.php?username=${username}&password=${password}`;
+ localStorage.setItem(
+   "iptv_server",
+   document.getElementById("server").value
+ );
 
-document.getElementById("tv")
-        .src = url;
+ localStorage.setItem(
+   "iptv_user",
+   document.getElementById("username").value
+ );
+
+ localStorage.setItem(
+   "iptv_pass",
+   document.getElementById("password").value
+ );
+
+ alert("Configuração guardada");
+}
+
+function openPortal(){
+
+ const server =
+   document.getElementById("server").value;
+
+ window.open(
+   server,
+   "_blank"
+ );
+
+}
 
 </script>
 
