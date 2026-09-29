@@ -1,28 +1,13 @@
-<!DOCTYPE html>
-
-<html>
-
-<head>
-
-<meta charset="utf-8">
-
-<title>Hugo Drive TV</title>
-
 <script src="config.js"></script>
-
-</head>
-
-<body>
-
-<h1>Hugo Drive IPTV</h1>
-
+ 
 <script>
-
-console.log(IPTV_CONFIG.server);
-console.log(IPTV_CONFIG.username);
-
+const server = IPTV_CONFIG.server;
+const username = IPTV_CONFIG.username;
+const password = IPTV_CONFIG.password;
+ 
+console.log(server);
+console.log(username);
+ 
+// utilizar os valores para construir o URL IPTV
 </script>
-
-</body>
-
-</html>
+``
