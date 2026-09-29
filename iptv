@@ -1,14 +1,28 @@
+<!DOCTYPE html>
+
 <html>
+
 <head>
+
 <meta charset="utf-8">
-<title>Hugo Drive IPTV</title>
+
+<title>Hugo Drive TV</title>
+
 <script src="config.js"></script>
+
 </head>
+
 <body>
+
 <h1>Hugo Drive IPTV</h1>
+
 <script>
+
 console.log(IPTV_CONFIG.server);
 console.log(IPTV_CONFIG.username);
+
 </script>
+
 </body>
+
 </html>
