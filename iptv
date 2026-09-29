@@ -1,13 +1,73 @@
-<script src="config.js"></script>
- 
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+
+<meta charset=8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1">
+
+<title>Hugo Drive IPTV</title>
+
+<style>
+
+body{
+    margin:0;
+    background:#000;
+    color:white;
+    font-family:Arial;
+}
+
+header{
+    background:#111;
+    padding:15px;
+    text-align:center;
+    font-size:22px;
+    font-weight:bold;
+}
+
+iframe{
+    width:100%;
+    height:calc(100vh - 60px);
+    border:none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+📺 Hugo Drive IPTV
+</header>
+
+<iframe id="tv"></iframe>
+
 <script>
-const server = IPTV_CONFIG.server;
-const username = IPTV_CONFIG.username;
-const password = IPTV_CONFIG.password;
- 
-console.log(server);
-console.log(username);
- 
-// utilizar os valores para construir o URL IPTV
+
+const server =
+    "http://tron.robotman.top";
+
+const username =
+    "Hugo@Ratinho@31";
+
+const password =
+    "Swygj3m4CJs5";
+
+/*
+Exemplo mais comum em Xtream
+*/
+
+const url =
+    `${server}/player_api.php?username=${username}&password=${password}`;
+
+document.getElementById("tv")
+        .src = url;
+
 </script>
-``
+
+</body>
+
+</html>
