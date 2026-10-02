@@ -33,7 +33,6 @@ button,a{font:inherit}.topbar{height:48px;display:flex;align-items:center;justif
 <article class="card note-card"><div class="note-title">Nova nota</div><textarea id="note" placeholder="Toque para editar e guardar uma nota."></textarea></article>
 <article class="card calendar-card"><div class="month" id="month">MÊS</div><div class="day" id="day">00</div><div class="agenda"><b>AGENDA</b><span>Sem eventos</span></div></article>
 <article class="card weather"><div><div class="city" id="city">Lisboa</div><small id="updated">A atualizar...</small><div class="temp"><span id="temp">--</span>°</div><div class="desc" id="weatherDesc">Meteorologia</div><small id="weatherExtra"></small></div><div class="weather-icon" id="weatherIcon">☁️</div></article>
-<article class="card market"><div class="market-head"><div>TSLA<div class="demo">Gráfico visual de demonstração</div></div><span class="badge">PORTAL</span></div><div class="chart"><svg viewBox="0 0 700 130" preserveAspectRatio="none"><defs><linearGradient id="fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff6068" stop-opacity=".55"/><stop offset="1" stop-color="#ff6068" stop-opacity="0"/></linearGradient></defs><path d="M0 78 L48 69 L65 82 L110 77 L132 62 L174 70 L218 82 L270 76 L319 70 L369 62 L420 69 L470 57 L519 64 L568 66 L617 60 L661 74 L700 108 L700 130 L0 130Z" fill="url(#fill)"/><path d="M0 78 L48 69 L65 82 L110 77 L132 62 L174 70 L218 82 L270 76 L319 70 L369 62 L420 69 L470 57 L519 64 L568 66 L617 60 L661 74 L700 108" fill="none" stroke="#ff626b" stroke-width="5"/></svg></div><div class="market-foot"><span class="price">Tesla</span><span class="demo">Adicionar API financeira mais tarde</span></div></article>
 <a class="quick vehicle-quick" href="https://www.tesla.com/ownersmanual" target="_blank" rel="noopener"><div class="quick-icon">🚘</div><span>Veículo</span></a>
 </div></section>
 <section id="appsPage" class="page"><div class="apps-grid" id="appsGrid"></div></section>
@@ -70,20 +69,20 @@ const apps = [
 
 ];
 
-const grid=document.getElementById('appsGrid');
-grid.innerHTML = apps.map(([name,icon,url]) => `
+const grid = document.getElementById('appsGrid');
+
+grid.innerHTML = apps.map(([name, icon, url]) => `
 
 <a class="app"
    href="${url}"
    target="_blank"
    rel="noopener">
 
-    <div class="alt="${name}"
-            loading="lazy">
+    <div class="app-icon">
 
-    </div>
-    <div class=
-    
+        <img src="${icon}"
+`).join('');
+ 
 const clock=document.getElementById('clock');for(let i=1;i<=12;i++){const n=document.createElement('span');n.className='n';n.textContent=i;const a=i*Math.PI/6;n.style.left=(50+39*Math.sin(a))+'%';n.style.top=(50-39*Math.cos(a))+'%';clock.appendChild(n)}
 function tick(){const d=new Date();topTime.textContent=d.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'})+'   '+d.toLocaleDateString('pt-PT',{weekday:'long',day:'2-digit',month:'long'}).toUpperCase();hourHand.style.transform=`translateX(-50%) rotate(${(d.getHours()%12)*30+d.getMinutes()/2}deg)`;minHand.style.transform=`translateX(-50%) rotate(${d.getMinutes()*6}deg)`;secHand.style.transform=`translateX(-50%) rotate(${d.getSeconds()*6}deg)`;month.textContent=d.toLocaleDateString('pt-PT',{month:'long'}).toUpperCase();day.textContent=String(d.getDate()).padStart(2,'0')}tick();setInterval(tick,1000);
 const note=document.getElementById('note');note.value=localStorage.getItem('hugoDriveNote')||'';note.addEventListener('input',()=>localStorage.setItem('hugoDriveNote',note.value));
