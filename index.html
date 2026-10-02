@@ -41,30 +41,48 @@ button,a{font:inherit}.topbar{height:48px;display:flex;align-items:center;justif
 <div class="pager"><button id="p0" class="active" onclick="showPage(0)" aria-label="Dashboard"></button><button id="p1" onclick="showPage(1)" aria-label="Aplicações"></button></div>
 <nav class="dock"><button onclick="openLink('https://www.tesla.com/support')"><i>🛠️</i>Assistência</button><button onclick="showPage(1)"><i>📊</i>Aplicações</button><button onclick="openLink('https://shop.tesla.com/')"><i>🛍️</i>Shop</button><button onclick="focusNote()"><i>📝</i>Notas</button><button class="active" onclick="showPage(0)"><i>🕘</i>Início</button></nav>
 <script>
-const apps=[
-['Google Maps','logos:google-maps','https://maps.google.com','#fff'],
-['Waze','logos:waze','https://www.waze.com/live-map','#12c7e9'],
-['ABRP','simple-icons:tesla','https://abetterrouteplanner.com','#b72a55'],
-['WhatsApp','logos:whatsapp-icon','https://web.whatsapp.com','#fff'],
-['Outlook','logos:microsoft-outlook','https://outlook.live.com','#fff'],
-['Teams','logos:microsoft-teams','https://teams.microsoft.com','#fff'],
-['Telegram','logos:telegram','https://web.telegram.org','#fff'],
-['Spotify','logos:spotify-icon','https://open.spotify.com','#111'],
-['YouTube','logos:youtube-icon','https://www.youtube.com','#fff'],
-['Netflix','logos:netflix-icon','https://www.netflix.com','#111'],
-['Disney+','logos:disney','https://www.disneyplus.com','#102f48'],
-['Plex','logos:plex','https://app.plex.tv','#222'],
-['ChatGPT','logos:openai-icon','https://chatgpt.com','#fff'],
-['Copilot','logos:microsoft-copilot','https://copilot.microsoft.com','#fff'],
-['Gemini','logos:google-gemini','https://gemini.google.com','#fff'],
-['Gmail','logos:google-gmail','https://mail.google.com','#fff'],
-['Google Drive','logos:google-drive','https://drive.google.com','#fff'],
-['Google Photos','logos:google-photos','https://photos.google.com','#fff'],
-['Calendário','logos:google-calendar','https://calendar.google.com','#fff'],
-['IPTV','fluent-emoji-flat:television','iptv.html','#6254df']
+const apps = [
+
+ ['Maps','maps.png','https://maps.google.com'],
+ ['Waze','waze.png','https://www.waze.com/live-map'],
+ ['ABRP','abrp.png','https://abetterrouteplanner.com'],
+
+ ['WhatsApp','whatsapp.png','https://web.whatsapp.com'],
+ ['Outlook','outlook.png','https://outlook.live.com'],
+ ['Teams','teams.png','https://teams.microsoft.com'],
+ ['Telegram','telegram.png','https://web.telegram.org'],
+
+ ['Spotify','spotify.png','https://open.spotify.com'],
+ ['YouTube','youtube.png','https://www.youtube.com'],
+ ['Netflix','netflix.png','https://www.netflix.com'],
+ ['Plex','plex.png','https://app.plex.tv'],
+
+ ['ChatGPT','chatgpt.png','https://chatgpt.com'],
+ ['Gemini','gemini.png','https://gemini.google.com'],
+ ['Grok','grok.png','https://grok.com'],
+
+ ['Gmail','gmail.png','https://mail.google.com'],
+ ['Drive','drive.png','https://drive.google.com'],
+ ['Fotos','photos.png','https://photos.google.com'],
+ ['Calendário','calendar.png','https://calendar.google.com'],
+
+ ['Instagram','instagram.png','https://instagram.com']
+
 ];
 const grid=document.getElementById('appsGrid');
-grid.innerHTML=apps.map(([name,icon,url,tile])=>`<a class="app" href="${url}" target="_blank" rel="noopener" style="--tile:${tile}"><div class="app-icon"><img src="https://api.iconify.design/${icon.replace(':','/')}.svg?v=2.1" alt="${name}" loading="eager" onerror="this.style.display='none';this.parentElement.textContent='${name.charAt(0)}'"></div><div class="app-name">${name}</div></a>`).join('');
+grid.innerHTML = apps.map(([name,icon,url]) => `
+
+<a class="app"
+   href="${url}"
+   target="_blank"
+   rel="noopener">
+
+    <div class="alt="${name}"
+            loading="lazy">
+
+    </div>
+    <div class=
+    
 const clock=document.getElementById('clock');for(let i=1;i<=12;i++){const n=document.createElement('span');n.className='n';n.textContent=i;const a=i*Math.PI/6;n.style.left=(50+39*Math.sin(a))+'%';n.style.top=(50-39*Math.cos(a))+'%';clock.appendChild(n)}
 function tick(){const d=new Date();topTime.textContent=d.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'})+'   '+d.toLocaleDateString('pt-PT',{weekday:'long',day:'2-digit',month:'long'}).toUpperCase();hourHand.style.transform=`translateX(-50%) rotate(${(d.getHours()%12)*30+d.getMinutes()/2}deg)`;minHand.style.transform=`translateX(-50%) rotate(${d.getMinutes()*6}deg)`;secHand.style.transform=`translateX(-50%) rotate(${d.getSeconds()*6}deg)`;month.textContent=d.toLocaleDateString('pt-PT',{month:'long'}).toUpperCase();day.textContent=String(d.getDate()).padStart(2,'0')}tick();setInterval(tick,1000);
 const note=document.getElementById('note');note.value=localStorage.getItem('hugoDriveNote')||'';note.addEventListener('input',()=>localStorage.setItem('hugoDriveNote',note.value));
