@@ -4,91 +4,90 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <meta name="theme-color" content="#090a0d">
-<title>Hugo Drive v2.1</title>
+<title>Hugo Drive v2.2</title>
 <style>
 :root{--glass:rgba(14,17,22,.78);--line:rgba(255,255,255,.28);--text:#f6f7f9;--muted:#b9bec8;--yellow:#ffd334;--red:#ff4d50}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--text);background:#050608}body{min-height:100vh;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 78% 48%,rgba(176,130,75,.24),transparent 19%),linear-gradient(155deg,#08090b 0%,#17181b 36%,#08090b 55%,#020305 100%)}
 body:after{content:"";position:fixed;z-index:-1;width:150vw;height:34vh;left:-15vw;top:44vh;border-top:3px solid rgba(255,213,149,.65);border-radius:50%;transform:rotate(-7deg);box-shadow:0 -2px 14px rgba(255,205,135,.35),0 0 90px rgba(177,126,60,.18);pointer-events:none}
-button,a{font:inherit}.topbar{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:800;text-shadow:0 1px 5px #000}.brand{text-align:center;letter-spacing:5px;font-size:16px;font-style:italic}.brand small{display:block;color:var(--yellow);font-size:7px;letter-spacing:4px}.status{display:flex;gap:10px;align-items:center}.dot{width:9px;height:9px;border-radius:50%;background:#28e783;box-shadow:0 0 10px #28e783}.content{width:min(1530px,94vw);margin:42px auto 145px}.page{display:none}.page.active{display:block}
+button,a,input{font:inherit}.topbar{height:48px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font-size:12px;font-weight:800;text-shadow:0 1px 5px #000}.brand{text-align:center;letter-spacing:5px;font-size:16px;font-style:italic}.brand small{display:block;color:var(--yellow);font-size:7px;letter-spacing:4px}.status{display:flex;gap:10px;align-items:center}.dot{width:9px;height:9px;border-radius:50%;background:#28e783;box-shadow:0 0 10px #28e783}.content{width:min(1530px,94vw);margin:42px auto 145px}.page{display:none}.page.active{display:block}
 .dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:start}.card{position:relative;min-height:192px;background:var(--glass);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:0 18px 42px rgba(0,0,0,.28);backdrop-filter:blur(16px)}
 .clock-card{display:grid;place-items:center}.clock{width:156px;height:156px;border-radius:50%;background:#fafafa;border:3px solid #111;position:relative;color:#111;box-shadow:inset 0 0 0 2px #aaa}.clock .n{position:absolute;font-size:18px;font-weight:900;transform:translate(-50%,-50%)}.hand{position:absolute;left:50%;bottom:50%;transform-origin:50% 100%;border-radius:5px}.h{width:6px;height:43px;background:#111}.m{width:4px;height:60px;background:#111}.s{width:2px;height:65px;background:#ef8a18}.pin{position:absolute;width:12px;height:12px;background:#111;border-radius:50%;left:calc(50% - 6px);top:calc(50% - 6px)}
 .note-card{background:#fafafa;color:#333}.note-title{background:linear-gradient(#ffe45a,#ffd42e);padding:9px 18px;font-size:22px;font-weight:900;color:#111}.note-card textarea{width:100%;height:150px;border:0;outline:0;resize:none;padding:14px 18px;font-size:17px;line-height:31px;background:repeating-linear-gradient(#fff 0,#fff 30px,#dfe4eb 31px);color:#444}
 .calendar-card{background:#f7f7f7;color:#17191c}.month{background:var(--red);color:#fff;text-align:center;padding:14px;font-size:20px;font-weight:900;letter-spacing:2px}.day{font-size:92px;line-height:96px;text-align:center;font-weight:950}.agenda{border-top:1px solid #ddd;padding:8px 24px;font-weight:800}.agenda b{display:block;color:var(--red);font-size:12px}
 .weather{padding:18px;background:linear-gradient(125deg,rgba(116,132,148,.96),rgba(76,91,108,.8));display:flex;justify-content:space-between}.weather .temp{font-size:76px;line-height:80px}.weather .city,.weather .desc{font-weight:900;font-size:18px}.weather-icon{font-size:86px;align-self:center;filter:drop-shadow(0 7px 10px #556)}
-.market{grid-column:1/3;min-height:205px;padding:12px 15px}.market-head,.market-foot{display:flex;justify-content:space-between;font-weight:900}.badge{border:1px solid var(--red);border-radius:13px;color:#ff6a70;padding:3px 10px;font-size:12px}.chart{height:123px;margin-top:8px;border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}.chart svg{width:100%;height:100%}.price{font-size:21px;font-weight:950}.demo{font-size:10px;color:var(--muted)}
 .quick{justify-self:center;text-align:center;text-decoration:none;color:#fff}.quick-icon{width:78px;height:78px;border-radius:22px;display:grid;place-items:center;font-size:44px;background:linear-gradient(145deg,#2094ff,#5067ff);box-shadow:inset 0 0 0 1px #ffffff55,0 8px 20px #0008}.quick span{display:block;margin-top:7px;font-size:12px;font-weight:900}.vehicle-quick{grid-column:4;grid-row:2}
-.apps-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:26px 30px;padding:12px}.app{text-align:center;color:#fff;text-decoration:none;font-weight:800}.app-icon{width:96px;height:96px;margin:auto;border-radius:24px;background:var(--tile,#fff);display:flex;justify-content:center;align-items:center;box-shadow:inset 0 1px 1px #ffffffaa,inset 0 -2px 5px #0002,0 12px 30px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.45);transition:transform .2s ease;overflow:hidden}.app-icon img{width:64px;height:64px;object-fit:contain}.app:hover .app-icon{transform:translateY(-5px) scale(1.05)}.app-name{margin-top:8px;font-size:13px;text-shadow:0 2px 4px #000}
+.apps-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:26px 30px;padding:12px}.app{text-align:center;color:#fff;text-decoration:none;font-weight:800;cursor:pointer}.app-icon{width:96px;height:96px;margin:auto;border-radius:24px;background:var(--tile,#fff);display:flex;justify-content:center;align-items:center;box-shadow:inset 0 1px 1px #ffffffaa,inset 0 -2px 5px #0002,0 12px 30px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.45);transition:transform .2s ease;overflow:hidden}.app-icon img{width:64px;height:64px;object-fit:contain}.app:hover .app-icon{transform:translateY(-5px) scale(1.05)}.app-name{margin-top:8px;font-size:13px;text-shadow:0 2px 4px #000}
+/* IPTV */
+.iptv-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(300px,1fr);gap:18px}.iptv-panel{background:var(--glass);border:1px solid var(--line);border-radius:24px;padding:18px;backdrop-filter:blur(16px)}.iptv-player{width:100%;aspect-ratio:16/9;background:#000;border-radius:16px}.iptv-toolbar{display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:12px}.iptv-toolbar input,.search-input{width:100%;border:1px solid #ffffff35;border-radius:12px;background:#090b10;color:#fff;padding:12px;outline:none}.iptv-toolbar button,.file-label{border:0;border-radius:12px;background:var(--yellow);color:#111;padding:12px 16px;font-weight:900;cursor:pointer;text-align:center}.file-label{display:block;margin-bottom:10px}.file-label input{display:none}.search-input{margin-bottom:10px}.channel-list{max-height:58vh;overflow:auto;display:grid;gap:8px}.channel{display:grid;grid-template-columns:48px 1fr;align-items:center;gap:10px;width:100%;border:1px solid #ffffff22;border-radius:12px;background:#11151c;color:#fff;padding:8px;cursor:pointer;text-align:left}.channel:hover,.channel.active{border-color:var(--yellow);background:#24220f}.channel-logo{width:44px;height:44px;object-fit:contain;border-radius:8px;background:#fff}.channel-placeholder{display:grid;place-items:center;background:#252a32;font-size:22px}.channel-name{font-weight:900}.channel-group{font-size:11px;color:var(--muted)}.iptv-status{color:var(--muted);font-size:12px;margin:9px 2px}.now-playing{font-size:18px;font-weight:900;margin:12px 0 4px}.iptv-help{font-size:12px;color:var(--muted);line-height:1.45}
 .dock{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:20;display:flex;gap:15px;padding:14px 24px;background:rgba(25,28,34,.78);border:1px solid rgba(255,255,255,.35);border-radius:35px;backdrop-filter:blur(18px);box-shadow:0 15px 45px #0009}.dock button{border:0;background:transparent;color:#fff;cursor:pointer;text-align:center;font-size:11px;font-weight:800}.dock i{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:linear-gradient(145deg,#3c4653,#15191f);font-style:normal;font-size:34px;border:1px solid #ffffff30;margin-bottom:4px}.dock button.active i{outline:2px solid var(--yellow);transform:translateY(-3px)}
 .pager{position:fixed;left:50%;bottom:124px;transform:translateX(-50%);display:flex;gap:10px}.pager button{width:10px;height:10px;padding:0;border:0;border-radius:8px;background:#777}.pager .active{width:25px;background:#fff}
-@media(max-width:1050px){.dashboard{grid-template-columns:repeat(2,1fr)}.market{grid-column:1/3}.vehicle-quick{grid-column:auto;grid-row:auto}.apps-grid{grid-template-columns:repeat(4,1fr)}}
-@media(max-width:650px){.content{margin-top:20px}.dashboard{grid-template-columns:1fr}.market{grid-column:auto}.apps-grid{grid-template-columns:repeat(3,1fr);gap:22px 10px}.app-icon{width:72px;height:72px}.app-icon img{width:48px;height:48px}.dock{max-width:95vw;gap:4px;padding:10px}.dock i{width:52px;height:52px}.brand{font-size:12px}}
+@media(max-width:1050px){.dashboard{grid-template-columns:repeat(2,1fr)}.vehicle-quick{grid-column:auto;grid-row:auto}.apps-grid{grid-template-columns:repeat(4,1fr)}.iptv-layout{grid-template-columns:1fr}}
+@media(max-width:650px){.content{margin-top:20px}.dashboard{grid-template-columns:1fr}.apps-grid{grid-template-columns:repeat(3,1fr);gap:22px 10px}.app-icon{width:72px;height:72px}.app-icon img{width:48px;height:48px}.dock{max-width:95vw;gap:4px;padding:10px;overflow-x:auto}.dock i{width:52px;height:52px}.brand{font-size:12px}.iptv-toolbar{grid-template-columns:1fr}.channel-list{max-height:45vh}}
 </style>
 </head>
 <body>
-<header class="topbar"><div id="topTime">--:--</div><div class="brand">HUGO<small>DRIVE</small></div><div class="status"><span class="dot"></span><span>ONLINE · v2.1</span></div></header>
+<header class="topbar"><div id="topTime">--:--</div><div class="brand">HUGO<small>DRIVE</small></div><div class="status"><span class="dot"></span><span>ONLINE · v2.2</span></div></header>
 <main class="content">
 <section id="homePage" class="page active"><div class="dashboard">
 <article class="card clock-card"><div class="clock" id="clock"><div class="hand h" id="hourHand"></div><div class="hand m" id="minHand"></div><div class="hand s" id="secHand"></div><div class="pin"></div></div></article>
 <article class="card note-card"><div class="note-title">Nova nota</div><textarea id="note" placeholder="Toque para editar e guardar uma nota."></textarea></article>
 <article class="card calendar-card"><div class="month" id="month">MÊS</div><div class="day" id="day">00</div><div class="agenda"><b>AGENDA</b><span>Sem eventos</span></div></article>
-<article class="card weather"><div><div class="city" id="city">Lisboa</div><small id="updated">A atualizar...</small><div class="temp"><span id="temp">--</span>°</div><div class="desc" id="weatherDesc">Meteorologia</div><small id="weatherExtra"></small></div><div class="weather-icon" id="weatherIcon">☁️</div></article>
+<article class="card weather"><div><div class="city">Lisboa</div><small id="updated">A atualizar...</small><div class="temp"><span id="temp">--</span>°</div><div class="desc" id="weatherDesc">Meteorologia</div><small id="weatherExtra"></small></div><div class="weather-icon" id="weatherIcon">☁️</div></article>
 <a class="quick vehicle-quick" href="https://www.tesla.com/ownersmanual" target="_blank" rel="noopener"><div class="quick-icon">🚘</div><span>Veículo</span></a>
 </div></section>
 <section id="appsPage" class="page"><div class="apps-grid" id="appsGrid"></div></section>
+<section id="iptvPage" class="page">
+ <div class="iptv-layout">
+  <div class="iptv-panel">
+   <video id="iptvPlayer" class="iptv-player" controls playsinline></video>
+   <div id="nowPlaying" class="now-playing">Nenhum canal selecionado</div>
+   <div id="playerStatus" class="iptv-status">Carrega uma playlist M3U para começar.</div>
+   <p class="iptv-help">O portal usa apenas streams autorizados. Alguns endereços podem não funcionar devido a CORS, autenticação, formato incompatível ou bloqueios do browser do Tesla. A reprodução de vídeo pode ser limitada quando o veículo não está estacionado.</p>
+  </div>
+  <aside class="iptv-panel">
+   <div class="iptv-toolbar"><input id="playlistUrl" type="url" placeholder="URL da playlist M3U/M3U8"><button type="button" id="loadUrlBtn">Carregar</button></div>
+   <label class="file-label">Abrir ficheiro M3U<input id="playlistFile" type="file" accept=".m3u,.m3u8,audio/x-mpegurl,application/vnd.apple.mpegurl"></label>
+   <input id="channelSearch" class="search-input" type="search" placeholder="Pesquisar canal ou grupo..." disabled>
+   <div id="playlistStatus" class="iptv-status">0 canais</div>
+   <div id="channelList" class="channel-list"></div>
+  </aside>
+ </div>
+</section>
 </main>
-<div class="pager"><button id="p0" class="active" onclick="showPage(0)" aria-label="Dashboard"></button><button id="p1" onclick="showPage(1)" aria-label="Aplicações"></button></div>
-<nav class="dock"><button onclick="openLink('https://www.tesla.com/support')"><i>🛠️</i>Assistência</button><button onclick="showPage(1)"><i>📊</i>Aplicações</button><button onclick="openLink('https://shop.tesla.com/')"><i>🛍️</i>Shop</button><button onclick="focusNote()"><i>📝</i>Notas</button><button class="active" onclick="showPage(0)"><i>🕘</i>Início</button></nav>
+<div class="pager"><button id="p0" class="active" onclick="showPage(0)" aria-label="Dashboard"></button><button id="p1" onclick="showPage(1)" aria-label="Aplicações"></button><button id="p2" onclick="showPage(2)" aria-label="IPTV"></button></div>
+<nav class="dock"><button onclick="openLink('https://www.tesla.com/support')"><i>🛠️</i>Assistência</button><button onclick="showPage(1)"><i>📊</i>Aplicações</button><button onclick="showPage(2)"><i>📺</i>IPTV</button><button onclick="focusNote()"><i>📝</i>Notas</button><button class="active" onclick="showPage(0)"><i>🕘</i>Início</button></nav>
 <script>
-const apps = [
-
- ['Maps','maps.png','https://maps.google.com'],
- ['Waze','waze.png','https://www.waze.com/live-map'],
- ['ABRP','abrp.png','https://abetterrouteplanner.com'],
-
- ['WhatsApp','whatsapp.png','https://web.whatsapp.com'],
- ['Outlook','outlook.png','https://outlook.live.com'],
- ['Teams','teams.png','https://teams.microsoft.com'],
- ['Telegram','telegram.png','https://web.telegram.org'],
-
- ['Spotify','spotify.png','https://open.spotify.com'],
- ['YouTube','youtube.png','https://www.youtube.com'],
- ['Netflix','netflix.png','https://www.netflix.com'],
- ['Plex','plex.png','https://app.plex.tv'],
-
- ['ChatGPT','chatgpt.png','https://chatgpt.com'],
- ['Gemini','gemini.png','https://gemini.google.com'],
- ['Grok','grok.png','https://grok.com'],
-
- ['Gmail','gmail.png','https://mail.google.com'],
- ['Google Drive','drive.png','https://drive.google.com'],
- ['Google Photos','photos.png','https://photos.google.com'],
- ['Calendário','calendar.png','https://calendar.google.com'],
-
- ['Instagram','instagram.png','https://instagram.com']
-
+const apps=[
+ ['Maps','maps.png','https://maps.google.com'],['Waze','waze.png','https://www.waze.com/live-map'],['ABRP','abrp.png','https://abetterrouteplanner.com'],
+ ['WhatsApp','whatsapp.png','https://web.whatsapp.com'],['Outlook','outlook.png','https://outlook.live.com'],['Teams','teams.png','https://teams.microsoft.com'],['Telegram','telegram.png','https://web.telegram.org'],
+ ['Spotify','spotify.png','https://open.spotify.com'],['YouTube','youtube.png','https://www.youtube.com'],['Netflix','netflix.png','https://www.netflix.com'],['Plex','plex.png','https://app.plex.tv'],
+ ['IPTV','iptv.png','#iptv'],['ChatGPT','chatgpt.png','https://chatgpt.com'],['Gemini','gemini.png','https://gemini.google.com'],['Grok','grok.png','https://grok.com'],
+ ['Gmail','gmail.png','https://mail.google.com'],['Google Drive','drive.png','https://drive.google.com'],['Google Photos','photos.png','https://photos.google.com'],['Calendário','calendar.png','https://calendar.google.com'],['Instagram','instagram.png','https://instagram.com']
 ];
-
-const grid = document.getElementById('appsGrid');
-
-grid.innerHTML = apps.map(([name, icon, url]) => `
-
-<a class="app"
-   href="${url}"
-   target="_blank"
-   rel="noopener">
-
-    <div class="app-icon">
-
-        <img src="${icon}"
-`).join('');
- 
+const grid=document.getElementById('appsGrid');
+grid.innerHTML=apps.map(([name,icon,url])=>`<a class="app" href="${url}" ${url==='#iptv'?'data-iptv="1"':'target="_blank" rel="noopener"'}><div class="app-icon"><img src="${icon}" alt="" onerror="this.style.display='none';this.parentNode.textContent='${name==='IPTV'?'📺':'◼'}'"></div><div class="app-name">${name}</div></a>`).join('');
+grid.addEventListener('click',e=>{const link=e.target.closest('[data-iptv]');if(link){e.preventDefault();showPage(2)}});
 const clock=document.getElementById('clock');for(let i=1;i<=12;i++){const n=document.createElement('span');n.className='n';n.textContent=i;const a=i*Math.PI/6;n.style.left=(50+39*Math.sin(a))+'%';n.style.top=(50-39*Math.cos(a))+'%';clock.appendChild(n)}
-function tick(){const d=new Date();topTime.textContent=d.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'})+'   '+d.toLocaleDateString('pt-PT',{weekday:'long',day:'2-digit',month:'long'}).toUpperCase();hourHand.style.transform=`translateX(-50%) rotate(${(d.getHours()%12)*30+d.getMinutes()/2}deg)`;minHand.style.transform=`translateX(-50%) rotate(${d.getMinutes()*6}deg)`;secHand.style.transform=`translateX(-50%) rotate(${d.getSeconds()*6}deg)`;month.textContent=d.toLocaleDateString('pt-PT',{month:'long'}).toUpperCase();day.textContent=String(d.getDate()).padStart(2,'0')}tick();setInterval(tick,1000);
+function tick(){const d=new Date();document.getElementById('topTime').textContent=d.toLocaleTimeString('pt-PT',{hour:'2-digit',minute:'2-digit'})+'   '+d.toLocaleDateString('pt-PT',{weekday:'long',day:'2-digit',month:'long'}).toUpperCase();document.getElementById('hourHand').style.transform=`translateX(-50%) rotate(${(d.getHours()%12)*30+d.getMinutes()/2}deg)`;document.getElementById('minHand').style.transform=`translateX(-50%) rotate(${d.getMinutes()*6}deg)`;document.getElementById('secHand').style.transform=`translateX(-50%) rotate(${d.getSeconds()*6}deg)`;document.getElementById('month').textContent=d.toLocaleDateString('pt-PT',{month:'long'}).toUpperCase();document.getElementById('day').textContent=String(d.getDate()).padStart(2,'0')}tick();setInterval(tick,1000);
 const note=document.getElementById('note');note.value=localStorage.getItem('hugoDriveNote')||'';note.addEventListener('input',()=>localStorage.setItem('hugoDriveNote',note.value));
-function showPage(n){document.querySelectorAll('.page').forEach((page,i)=>page.classList.toggle('active',i===n));p0.classList.toggle('active',n===0);p1.classList.toggle('active',n===1)}function openLink(url){window.open(url,'_blank','noopener')}function focusNote(){showPage(0);setTimeout(()=>note.focus(),100)}
+function showPage(n){document.querySelectorAll('.page').forEach((page,i)=>page.classList.toggle('active',i===n));document.querySelectorAll('.pager button').forEach((b,i)=>b.classList.toggle('active',i===n));document.querySelectorAll('.dock button').forEach(b=>b.classList.remove('active'));const dockIndex=n===0?4:n===1?1:2;document.querySelectorAll('.dock button')[dockIndex].classList.add('active')}
+function openLink(url){window.open(url,'_blank','noopener')}function focusNote(){showPage(0);setTimeout(()=>note.focus(),100)}
 function weatherCode(c){if(c===0)return['Céu limpo','☀️'];if(c<=3)return['Parcialmente nublado','⛅'];if(c<=48)return['Neblina','🌫️'];if(c<=67)return['Chuva','🌧️'];if(c<=77)return['Neve','🌨️'];if(c<=82)return['Aguaceiros','🌦️'];return['Trovoada','⛈️']}
-async function loadWeather(){try{const url='https://api.open-meteo.com/v1/forecast?latitude=38.7223&longitude=-9.1393&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1';const response=await fetch(url);const data=await response.json();const info=weatherCode(data.current.weather_code);temp.textContent=Math.round(data.current.temperature_2m);weatherDesc.textContent=info[0];weatherIcon.textContent=info[1];weatherExtra.textContent=`Máx. ${Math.round(data.daily.temperature_2m_max[0])}° · Mín. ${Math.round(data.daily.temperature_2m_min[0])}° · Vento ${Math.round(data.current.wind_speed_10m)} km/h`;updated.textContent='Atualizado agora'}catch(error){updated.textContent='Meteorologia indisponível'}}loadWeather();
+async function loadWeather(){try{const url='https://api.open-meteo.com/v1/forecast?latitude=38.7223&longitude=-9.1393&current=temperature_2m,weather_code,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min&timezone=auto&forecast_days=1';const response=await fetch(url);if(!response.ok)throw new Error('HTTP '+response.status);const data=await response.json();const info=weatherCode(data.current.weather_code);document.getElementById('temp').textContent=Math.round(data.current.temperature_2m);document.getElementById('weatherDesc').textContent=info[0];document.getElementById('weatherIcon').textContent=info[1];document.getElementById('weatherExtra').textContent=`Máx. ${Math.round(data.daily.temperature_2m_max[0])}° · Mín. ${Math.round(data.daily.temperature_2m_min[0])}° · Vento ${Math.round(data.current.wind_speed_10m)} km/h`;document.getElementById('updated').textContent='Atualizado agora'}catch(error){document.getElementById('updated').textContent='Meteorologia indisponível'}}loadWeather();
+
+// IPTV: leitura M3U, pesquisa e reprodução de streams suportados nativamente.
+let channels=[];
+const player=document.getElementById('iptvPlayer'), channelList=document.getElementById('channelList'), search=document.getElementById('channelSearch');
+function attr(line,name){const m=line.match(new RegExp(name+'="([^"]*)"','i'));return m?m[1]:''}
+function parseM3U(text){const lines=text.replace(/\r/g,'').split('\n');const result=[];let meta=null;for(const raw of lines){const line=raw.trim();if(!line)continue;if(line.startsWith('#EXTINF:')){const comma=line.indexOf(',');meta={name:comma>=0?line.slice(comma+1).trim():'Canal sem nome',logo:attr(line,'tvg-logo'),group:attr(line,'group-title'),id:attr(line,'tvg-id')};}else if(!line.startsWith('#')&&meta){result.push({...meta,url:line});meta=null;}}return result}
+function renderChannels(filter=''){const q=filter.trim().toLocaleLowerCase('pt-PT');const visible=channels.filter(c=>(c.name+' '+c.group).toLocaleLowerCase('pt-PT').includes(q));channelList.innerHTML='';for(const [index,c] of visible.entries()){const b=document.createElement('button');b.type='button';b.className='channel';b.dataset.url=c.url;b.innerHTML=`${c.logo?`<img class="channel-logo" loading="lazy" alt="" src="${escapeHtml(c.logo)}" onerror="this.outerHTML='<span class=&quot;channel-logo channel-placeholder&quot;>📺</span>'">`:'<span class="channel-logo channel-placeholder">📺</span>'}<span><span class="channel-name">${escapeHtml(c.name)}</span><span class="channel-group">${escapeHtml(c.group||'Sem grupo')}</span></span>`;b.addEventListener('click',()=>playChannel(c,b));channelList.appendChild(b)}document.getElementById('playlistStatus').textContent=`${visible.length} de ${channels.length} canais`;if(!visible.length)channelList.innerHTML='<div class="iptv-status">Nenhum canal encontrado.</div>'}
+function escapeHtml(value){return String(value).replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]))}
+function setPlaylist(text,source){channels=parseM3U(text);search.disabled=!channels.length;search.value='';renderChannels();document.getElementById('playerStatus').textContent=channels.length?`Playlist carregada: ${source}`:'A playlist não contém entradas M3U válidas.';if(channels.length)localStorage.setItem('hugoDrivePlaylistUrl',document.getElementById('playlistUrl').value.trim())}
+async function loadPlaylistUrl(){const url=document.getElementById('playlistUrl').value.trim();if(!/^https?:\/\//i.test(url)){document.getElementById('playerStatus').textContent='Introduz um endereço HTTP ou HTTPS válido.';return}document.getElementById('playerStatus').textContent='A carregar playlist...';try{const r=await fetch(url);if(!r.ok)throw new Error('HTTP '+r.status);setPlaylist(await r.text(),url)}catch(e){document.getElementById('playerStatus').textContent='Não foi possível carregar. O servidor pode bloquear pedidos CORS ou exigir autenticação.'}}
+function playChannel(c,button){document.querySelectorAll('.channel').forEach(x=>x.classList.remove('active'));button.classList.add('active');document.getElementById('nowPlaying').textContent=c.name;document.getElementById('playerStatus').textContent='A abrir stream...';player.pause();player.removeAttribute('src');player.load();player.src=c.url;player.play().then(()=>document.getElementById('playerStatus').textContent='Em reprodução').catch(()=>document.getElementById('playerStatus').textContent='O browser não conseguiu iniciar este stream. Pode ser necessário tocar em Play, ou o formato/CORS pode não ser suportado.')}
+document.getElementById('loadUrlBtn').addEventListener('click',loadPlaylistUrl);document.getElementById('playlistUrl').addEventListener('keydown',e=>{if(e.key==='Enter')loadPlaylistUrl()});document.getElementById('playlistFile').addEventListener('change',e=>{const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=()=>setPlaylist(String(reader.result||''),file.name);reader.onerror=()=>document.getElementById('playerStatus').textContent='Não foi possível ler o ficheiro.';reader.readAsText(file)});search.addEventListener('input',()=>renderChannels(search.value));player.addEventListener('error',()=>document.getElementById('playerStatus').textContent='Erro no stream. Confirma o endereço, o formato, a autenticação e as permissões CORS.');
+const savedPlaylist=localStorage.getItem('hugoDrivePlaylistUrl');if(savedPlaylist)document.getElementById('playlistUrl').value=savedPlaylist;
 </script>
 </body>
 </html>
